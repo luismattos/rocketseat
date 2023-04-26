@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Focus Timer</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="js/main.js" type="module" defer></script>
+  </head>
+
+  <body>
+    <div id="page">
+      <div id="content">
+        <h1>
+          <input
+            type="text"
+            id="in-minutes"
+            class="inputs"
+            pattern="[0-9]{2}"
+            maxlength="2"
+            placeholder="25"
+            autocomplete="off"
+          />
+          :
+          <input
+            type="text"
+            id="in-seconds"
+            class="inputs"
+            pattern="[0-9]{2}"
+            maxlength="2"
+            placeholder="00"
+            autocomplete="off"
+            disabled
+          />
+        </h1>
+
+        <div id="btns-wrapper">
+          <img
+            id="play-circle"
+            src="assets/play-circle.svg"
+            alt="Play Button"
+          />
+
+          <img
+            id="pause-circle"
+            class="hidden"
+            src="assets/pause-circle.svg"
+            alt="Play Button"
+          />
+
+          <img
+            id="stopwatch"
+            src="assets/stopwatch.svg"
+            alt="Stop Watch Button"
+          />
+
+          <img
+            id="stop-circle"
+            class="hidden"
+            src="assets/stop-circle.svg"
+            alt="Stop Button"
+          />
+        </div>
+      </div>
+
+      <div id="sound">
+        <img
+          id="volume-medium"
+          class="hidden"
+          src="assets/volume-medium.svg"
+          alt="Volume Medium Button"
+        />
+        <img
+          id="volume-mute"
+          src="assets/volume-mute.svg"
+          alt="Volume Mute Button"
+        />
+      </div>
+    </div>
+  </body>
+</html>

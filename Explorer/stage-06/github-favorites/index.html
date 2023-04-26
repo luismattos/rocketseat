@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="utils.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="/js/index.js" type="module" defer></script>
+
+    <title>Github Favorites</title>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>GitHub Favorites</h1>
+        <form>
+          <label for="in-user" class="sr-only">GitHub Users</label>
+          <input id="in-user" type="text" placeholder="GitHub Users" />
+          <input id="btn-search" type="submit" value="&plus;" />
+        </form>
+      </header>
+
+      <main>
+        <table>
+          <thead>
+            <tr>
+              <td>User</td>
+              <td>Repositories</td>
+              <td>Followers</td>
+              <td><span class="hidden">Remove</span></td>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </main>
+
+      <footer></footer>
+    </div>
+  </body>
+</html>

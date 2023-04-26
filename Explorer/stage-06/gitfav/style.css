@@ -1,0 +1,212 @@
+:root {
+  font-size: 62.5%;
+
+  --hue: 194;
+  --bg-page: hsl(194, 0%, 10%);
+  --bg-form-btn: hsl(194, 70%, 25%);
+  --bg-form-btn-hover: hsl(194, 70%, 20%);
+  --bg-form-in: hsl(194, 65%, 5%);
+  --bg-thead: var(--bg-form-btn);
+  --bg-tbody-odd: hsl(194, 60%, 5%);
+  --bg-tbody-even: hsla(194, 60%, 5%, 0.5);
+
+  --fc-primary: hsl(194, 0%, 100%);
+  --fc-tbody-action: hsl(355, 90%, 65%);
+  --fc-tbody-action-hover: hsl(355, 90%, 45%);
+  --fc-tbody-empty: hsl(194, 5%, 30%);
+
+  --border-radius: 0.8rem;
+
+  --size-avatar: 5.2rem;
+}
+
+* {
+  box-sizing: border-box;
+
+  font-size: 1.6rem;
+  color: var(--fc-primary);
+}
+
+body {
+  min-width: fit-content;
+  width: 100vw;
+
+  min-height: fit-content;
+  height: 100vh;
+}
+
+#page {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+
+  grid-template-rows: repeat(8, 1fr);
+  grid-template-columns: 1fr 18fr 1fr;
+
+  background-color: var(--bg-page);
+}
+
+header {
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+header img {
+  width: 15%;
+  height: auto;
+  max-height: 20%;
+}
+
+header form {
+  max-width: 51.2rem;
+
+  display: flex;
+  justify-content: center;
+  gap: 0;
+}
+
+header form input {
+  border: none;
+  outline: none;
+  padding: 0.4rem 0.8rem;
+  line-height: 100%;
+}
+
+header form input[type="text"]#in-login {
+  flex-grow: 3;
+  background-color: var(--bg-form-in);
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+header form input[type="submit"]#btn-submit {
+  background-color: var(--bg-form-btn);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  cursor: pointer;
+}
+
+header form input[type="submit"]#btn-submit:hover {
+  background-color: var(--bg-form-btn-hover);
+}
+
+main {
+  grid-row: 2 / 8;
+  grid-column: 2 / 3;
+
+  display: flex;
+  flex-direction: column;
+}
+
+main table tr {
+  background: pink;
+}
+
+main table td {
+  padding: 0.8rem;
+}
+
+main table thead tr {
+  background-color: var(--bg-thead);
+}
+
+main table thead tr:first-child td:first-child {
+  border-radius: var(--border-radius) 0 0 0;
+}
+
+main table thead tr:first-child td:last-child {
+  border-radius: 0 var(--border-radius) 0 0;
+}
+
+main table tbody tr:nth-child(odd) {
+  background-color: var(--bg-tbody-odd);
+}
+
+main table tbody tr:nth-child(even) {
+  background-color: var(--bg-tbody-even);
+}
+
+main table tbody tr:last-child td:first-child {
+  border-radius: 0 0 0 var(--border-radius);
+}
+
+main table tbody tr:last-child td:last-child {
+  border-radius: 0 0 var(--border-radius) 0;
+}
+
+main table tbody tr td {
+  vertical-align: middle;
+}
+
+main table tbody tr td:nth-child(1) > div {
+  display: flex;
+  gap: 3.2rem;
+}
+
+main table tbody tr td:nth-child(1) img.user-avatar {
+  width: var(--size-avatar);
+  height: var(--size-avatar);
+  border-radius: 1000px;
+}
+
+main table tbody tr td:nth-child(1) > div > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+main table tbody tr td:nth-child(1) div.user-login a {
+  font-style: italic;
+  cursor: pointer;
+}
+
+main table tbody tr td:nth-child(1) div.user-login a:hover {
+  text-decoration: underline;
+}
+
+main table tbody tr td:nth-child(4) div.user-remove {
+  color: var(--fc-tbody-action);
+  cursor: pointer;
+}
+
+main table tbody tr td:nth-child(4) div.user-remove:hover {
+  color: var(--fc-tbody-action-hover);
+}
+
+main #empty-table-wrapper {
+  height: 100%;
+}
+
+main .empty-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.4rem;
+  height: 100%;
+
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+
+  background-color: var(--bg-tbody-even);
+}
+
+main .empty-table.hidden {
+  display: none;
+}
+
+footer {
+  grid-row: 8 / 9;
+  grid-column: 2 / 3;
+
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+footer div.author-name span {
+  font-style: italic;
+}

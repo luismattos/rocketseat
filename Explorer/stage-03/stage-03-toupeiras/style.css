@@ -1,0 +1,150 @@
+:root {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#jardim {
+  display: grid;
+  grid-template-areas:
+    ". . . . . ."
+    ". A B C D ."
+    ". E F G H ."
+    ". I J K L ."
+    ". . . . . .";
+  gap: 3.2rem;
+
+  position: relative;
+  width: 144rem;
+  height: 102.4rem;
+}
+
+#bgImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.toupeira {
+  background: url(assets/toupeira0.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  animation-name: downtopdown;
+  animation-duration: 0.7s;
+  animation-iteration-count: 1;
+}
+
+.toupeira:nth-of-type(1):hover {
+  animation-name: downtopdown;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+}
+
+.toupeira:nth-of-type(1) {
+  grid-area: A;
+}
+
+.toupeira:nth-of-type(2) {
+  grid-area: B;
+  animation-delay: 1s;
+}
+
+.toupeira:nth-of-type(3) {
+  grid-area: C;
+  animation-delay: 6s;
+}
+
+.toupeira:nth-of-type(4) {
+  grid-area: D;
+  animation-delay: 4s;
+}
+
+.toupeira:nth-of-type(5) {
+  grid-area: E;
+  animation-delay: 8s;
+}
+
+.toupeira:nth-of-type(6) {
+  grid-area: F;
+  animation-delay: 2s;
+}
+
+.toupeira:nth-of-type(7) {
+  grid-area: G;
+  animation-delay: 5s;
+}
+
+.toupeira:nth-of-type(8) {
+  grid-area: H;
+  animation-delay: 7s;
+}
+
+.toupeira:nth-of-type(9) {
+  grid-area: I;
+  animation-delay: 3s;
+}
+
+.toupeira:nth-of-type(10) {
+  grid-area: J;
+  animation-delay: 4s;
+}
+
+.toupeira:nth-of-type(11) {
+  grid-area: K;
+  animation-delay: 10s;
+}
+
+.toupeira:nth-of-type(12) {
+  grid-area: L;
+  animation-delay: 3s;
+}
+
+@keyframes downtopdown {
+  from {
+    background: url(assets/toupeira0.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  16% {
+    background: url(assets/toupeira1.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  34% {
+    background: url(assets/toupeira2.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  50% {
+    background: url(assets/toupeira3.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  66% {
+    background: url(assets/toupeira2.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  84% {
+    background: url(assets/toupeira1.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  to {
+    background: url(assets/toupeira0.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}

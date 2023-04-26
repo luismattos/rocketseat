@@ -1,0 +1,158 @@
+.line {
+  margin: 0;
+  padding: 0;
+  height: 0px;
+  border: 1px solid #e6e6f0;
+}
+
+body {
+  background: #e5e5e5;
+}
+
+#page {
+  width: 736px;
+  margin: 0 auto;
+}
+
+input,
+select,
+textarea {
+  border: 1px solid #e6e6f0;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+header::before {
+  display: block;
+  background: #121214;
+  height: 368px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  z-index: -1;
+}
+
+header {
+  color: #ffffff;
+  width: 50%;
+}
+
+header p {
+  color: #42d3ff;
+}
+
+main {
+  background: #fafafc;
+  border-radius: 8px 8px 0 0;
+  padding: 64px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+
+fieldset legend {
+  padding-bottom: 16px;
+}
+
+#privacidade > div:last-child {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+#privacidade > div:last-child label {
+  order: 1;
+}
+
+#privacidade > div:last-child * {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset:last-child {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-areas:
+    "line line line"
+    "lb-data lb-das lb-ate"
+    "in-data in-das in-ate";
+  gap: 8px;
+}
+
+fieldset:last-child .line {
+  grid-area: line;
+}
+
+fieldset:last-child > label:nth-child(0) {
+  grid-area: lb-data;
+}
+
+fieldset:last-child > label:nth-child(1) {
+  grid-area: lb-das;
+}
+
+fieldset:last-child > label:nth-child(2) {
+  grid-area: lb-ate;
+}
+
+#data {
+  grid-area: in-data;
+}
+
+#das {
+  grid-area: in-das;
+}
+
+#ate {
+  grid-area: in-ate;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+
+  padding: 40px 80px;
+
+  background: #f0f0f4;
+  border-radius: 0 0 8px 8px;
+}
+
+footer input {
+  padding: 16px 0;
+  width: 100%;
+  border-radius: 8px;
+  background: #04d361;
+  color: white;
+  border: none;
+}
+
+label {
+  margin-top: 24px;
+}
+
+input,
+textarea {
+  margin-top: 8px;
+}
+
+span {
+  color: #c1bccc;
+}
+
+legend {
+  font-size: 24px;
+}

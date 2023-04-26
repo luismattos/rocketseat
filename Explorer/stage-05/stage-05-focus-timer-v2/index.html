@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focus Timer</title>
+
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="js/index.js" type="module" defer></script>
+  </head>
+  <body>
+    <div id="page">
+      <audio class="bg-audio hidden" type="audio/mp3" src=""></audio>
+
+      <div id="timer-content">
+        <div id="timer-display">
+          <span class="input" role="textbox" contenteditable="false">00</span>
+          <span>:</span>
+          <span id="timer-seconds">00</span>
+        </div>
+
+        <div id="timer-controls">
+          <div>
+            <img
+              class="play light"
+              src="assets/media-play-circle-black.svg"
+              alt=""
+            />
+            <img
+              class="play dark"
+              src="assets/media-play-circle-white.svg"
+              alt=""
+            />
+            <img
+              class="pause light"
+              src="assets/media-pause-circle-black.svg"
+              alt=""
+            />
+            <img
+              class="pause dark"
+              src="assets/media-pause-circle-white.svg"
+              alt=""
+            />
+          </div>
+
+          <div>
+            <img class="clock light" src="assets/clock-black.svg" alt="" />
+            <img class="clock dark" src="assets/clock-white.svg" alt="" />
+            <img
+              class="stop light"
+              src="assets/media-stop-circle-black.svg"
+              alt=""
+            />
+            <img
+              class="stop dark"
+              src="assets/media-stop-circle-white.svg"
+              alt=""
+            />
+          </div>
+
+          <div>
+            <img class="plus light" src="assets/plus-circle-black.svg" alt="" />
+            <img class="plus dark" src="assets/plus-circle-white.svg" alt="" />
+          </div>
+
+          <div>
+            <img
+              class="minus light"
+              src="assets/minus-circle-black.svg"
+              alt=""
+            />
+            <img
+              class="minus dark"
+              src="assets/minus-circle-white.svg"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      <div id="sound-content">
+        <div id="tree-card" class="card">
+          <img src="assets/tree-black.svg" class="tree light" alt="" />
+          <img src="assets/tree-white.svg" class="tree dark" alt="" />
+          <input type="range" />
+        </div>
+        <div id="rain-card" class="card">
+          <img src="assets/rain-black.svg" class="rain light" alt="" />
+          <img src="assets/rain-white.svg" class="rain dark" alt="" />
+          <input type="range" />
+        </div>
+        <div id="store-card" class="card">
+          <img src="assets/store-black.svg" class="store light" alt="" />
+          <img src="assets/store-white.svg" class="store dark" alt="" />
+          <input type="range" />
+        </div>
+        <div id="fire-card" class="card">
+          <img src="assets/fire-black.svg" class="fire light" alt="" />
+          <img src="assets/fire-white.svg" class="fire dark" alt="" />
+          <input type="range" />
+        </div>
+      </div>
+
+      <div id="theme-content">
+        <img class="theme light" src="assets/sun-black.svg" alt="" />
+        <img class="theme dark" src="assets/moon-white.svg" alt="" />
+      </div>
+    </div>
+  </body>
+</html>

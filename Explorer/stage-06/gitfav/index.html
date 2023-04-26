@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="utils.css" />
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="js/index.js" type="module" defer></script>
+
+    <title>GitFav</title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header>
+        <img src="/assets/logo.svg" alt="Logo GitFav" />
+        <form action="">
+          <label for="in-login" class="sr-only">GitHub username</label>
+          <input
+            type="text"
+            name="in-login"
+            id="in-login"
+            placeholder="GitHub username"
+          />
+          <input id="btn-submit" type="submit" value="&star; Favoritar" />
+        </form>
+      </header>
+
+      <main>
+        <table>
+          <thead>
+            <tr>
+              <td>User</td>
+              <td>Repositories</td>
+              <td>Followers</td>
+              <td>Action</td>
+            </tr>
+          </thead>
+
+          <tbody></tbody>
+        </table>
+        <div class="empty-table">
+          <img src="assets/Estrela.svg" alt="Star Image" />
+          <span>No favorites yet</span>
+        </div>
+      </main>
+      <footer>
+        <div class="author-name">
+          por <span>Luis Paulo Barcia de Mattos</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

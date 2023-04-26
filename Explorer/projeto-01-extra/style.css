@@ -1,0 +1,76 @@
+:root{
+    --color-gray-light: #eceff2;
+    --color-gray-dark: #828282;
+    --color-pink: #ee24ff;
+    --color-blue-dark: #3f3d56;
+    --ff-dosis: 'Dosis', sans-serif;
+    --ff-open-sans: 'Open Sans', sans-serif;
+}
+
+body {
+    font-family: var(--ff-open-sans);
+    text-align: center;
+    margin: 0 0 0 0;
+    font-size: 15px;
+}
+
+#main {
+    margin: 64px auto;
+    width: 540px;
+}
+
+#main h1 {
+    font-family: var(--ff-dosis);
+    color: var(--color-blue-dark);
+    font-weight: 500;
+    font-style: normal;
+    font-size: 32px;
+    line-height: 40px;
+    margin-bottom: 16px;
+}
+
+#main h1 span{
+    color: var(--color-pink);
+    font-weight: 700;
+}
+
+#main p {
+    color: var(--color-gray-dark);
+    font-weight: 400;
+    line-height: 22px;
+}
+
+#main p span {
+    color: var(--color-blue-dark);
+    font-weight: 700;
+}
+
+#main p + p {
+    margin-top: 32px;
+}
+
+#main p span {
+    color: var(--color-blue-dark);
+}
+
+.line {
+    border: 1px solid var(--color-gray-light);
+    height: 0px;
+    width: 391px;
+    margin: 0 auto 16px;
+}
+
+#footer a {
+    color:  var(--color-blue-dark);
+    text-decoration: none;
+    font-weight: 700;
+    line-height: 22.15px;
+}
+
+#footer a + a {
+    margin-left: 42px;
+}
+
+#footer img{
+    margin-top: 40.83px;
+}
