@@ -1,19 +1,19 @@
-# Land 08 - Inglês
+# Land 08 - English
 
 Hello dev! How are you? 📢
 
-Já aprendemos que é importante colocar o inglês na trilha do aprendizado para escrever um bom código, que seja legível por outros profissionais ao redor do mundo. Que tal, então, refatorar os códigos que você já fez, traduzindo comentários e termos para o inglês?
+We've already learned that it's important to put English on the learning track to write good code that can be read by other professionals around the world. How about refactoring the code you've already written, translating comments and terms to English?
 
-# 💻 Sobre o desafio
+# 💻 About the challenge
 
-Volte ao desafio **“Grid com animações”** do Stage 03 e refatore seu código, traduzindo para inglês os comentários e nomes de classes e ids, sempre que possível.
+Go back to the **"Grid with Animations"** challenge from Stage 03 and refactor your code, translating comments and class and id names to English whenever possible.
 
-Após concluir a refatoração, suba o código no seu perfil do GitHub, atualizando o projeto.
+After completing the refactoring, upload the code to your GitHub profile, updating the project.
 
-📅 Entrega
+📅 Submission
 
-Você deverá entregar esse desafio enviando o link do repositório do GitHub com o código traduzido. **Lembre-se de escrever um bom [README.md](http://README.md) em inglês sobre o projeto!**
+You must submit this challenge by sending the link to the GitHub repository with the translated code. **Remember to write a good [README.md](http://README.md) in English about the project!**
 
-**A milha extra:** que tal atualizar também o [README.md](http://README.md) do seu perfil do GitHub e deixá-lo em inglês? Essa parte não será entregue, mas você pode compartilhar seu perfil na comunidade e no Linkedin! Se desejar, marca a Rocketseat!
+**The extra mile:** How about also updating your GitHub profile's [README.md](http://README.md) and writing it in English? This part will not be delivered, but you can share your profile with the community and on LinkedIn! If you want, tag Rocketseat!
 
-Feito com 💜 por Rocketseat 👋 Participe da nossa [comunidade aberta!](https://discord.gg/Ns86RQyVH8)
+Made with 💜 by Rocketseat. 👋 Join our [open community!](https://discord.gg/Ns86RQyVH8)
