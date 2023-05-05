@@ -1,6 +1,187 @@
 # [Mongoose](https://mongoosejs.com/)
 
-## CRUD
+## Schema
+
+### CommonJS
+
+```js
+import mongoose from "mongoose";
+const { Schema } = mongoose;
+
+const blogSchema = new Schema(
+  {
+    title: { type: String, required: true }, // String is shorthand for {type: String}
+    author: { type: String, required: true },
+    body: String,
+    comments: [{ body: String, date: Date }],
+    date: { type: Date, default: Date.now },
+    tags: { type: [String], index: true }, // path level
+    hidden: Boolean,
+    meta: {
+      votes: Number,
+      favs: Number,
+    },
+  },
+  {
+    // Assign a function to the "methods" object of our animalSchema through schema options. By following this approach, there is no need to create a separate TS type to define the type of the instance functions.
+    methods: {
+      findSimilarAuthor(cb) {
+        return mongoose.model("Blog").find({ author: this.author }, cb);
+      },
+    },
+    // Assign a function to the "statics" object of our animalSchema through schema options. By following this approach, there is no need to create a separate TS type to define the type of the statics functions.
+    statics: {
+      findByAuthor(author) {
+        return this.find({ author: new RegExp(author, "i") });
+      },
+    },
+    // Assign a function to the "query" object of our animalSchema through schema options. By following this approach, there is no need to create a separate TS type to define the type of the query functions.
+    query: {
+      byAuthor(author) {
+        return this.where({ author: new RegExp(author, "i") });
+      },
+    },
+  }
+);
+
+const Blog = mongoose.model("Blog", blogSchema);
+
+const blog = new Blog({
+  title: "My Blog",
+  author: "Desconhecido",
+  tags: ["blog", "lifestyle"],
+});
+
+blog.findSimilarAuthor((err, blogs) => {
+  console.log(blogs);
+});
+
+const blogs = await Blog.findByAuthor("Desconhecido");
+
+Blog.find()
+  .byAuthor("Desconhecido")
+  .exec((err, blogs) => {
+    console.log(blogs);
+  });
+
+Blog.findOne()
+  .byAuthor("Desconhecido")
+  .exec((err, animal) => {
+    console.log(blogs);
+  });
+```
+
+### ES6
+
+```js
+class PersonClass {
+  // `fullName` becomes a virtual
+  get fullName() {
+    return `My name is ${this.firstName} ${this.lastName}`;
+  }
+  set fullName(v) {
+    const firstSpace = v.indexOf(" ");
+    this.firstName = v.split(" ")[0];
+    this.lastName = firstSpace === -1 ? "" : v.substring(firstSpace + 1);
+  }
+
+  // `getFullName()` becomes a document method
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+
+  // `findByFullName()` becomes a static
+  static findByFullName(name) {
+    const firstSpace = name.indexOf(" ");
+    const firstName = name.split(" ")[0];
+    const lastName = firstSpace === -1 ? "" : name.substring(firstSpace + 1);
+    return this.findOne({ firstName, lastName });
+  }
+}
+
+const PersonSchema = mongoose.Schema({
+  firstName: String,
+  lastName: String,
+});
+
+const personSchema = new PersonSchema();
+
+personSchema.loadClass(PersonClass);
+
+console.log(personSchema.methods); // { getFullName: [Function: myMethod] }
+console.log(personSchema.statics); // { findByFullName: [Function: myStatic] }
+console.log(personSchema.virtuals); // { fullName: VirtualType { ... } }
+
+const Person = db.model("Person", personSchema);
+
+const doc = await Person.create({
+  firstName: "Jon",
+  lastName: "Snow",
+});
+
+assert.equal(doc.fullName, "My name is Jon Snow");
+doc.fullName = "Jon Stark";
+assert.equal(doc.firstName, "Jon");
+assert.equal(doc.lastName, "Stark");
+const foundPerson = await Person.findByFullName("Jon Snow");
+
+assert.equal(foundPerson.fullName, "My name is Jon Snow");
+```
+
+### Options
+
+Schemas have a few configurable options which can be passed to the constructor or to the set method:
+
+```js
+new Schema(
+  {
+    /* ... */
+  },
+  options
+);
+
+// or
+
+const schema = new Schema({
+  /* ... */
+});
+schema.set(option, value);
+```
+
+#### [Valid Options](https://mongoosejs.com/docs/guide.html#options)
+
+- autoIndex:
+- autoCreate:
+- bufferCommands:
+- bufferTimeoutMS:
+- capped:
+- collection:
+- discriminatorKey:
+- id:
+- \_id:
+- minimize:
+- read:
+- writeConcern:
+- shardKey:
+- statics:
+- strict:
+- strictQuery:
+- toJSON:
+- toObject:
+- typeKey:
+- validateBeforeSave:
+- versionKey:
+- optimisticConcurrency:
+- collation:
+- timeseries:
+- selectPopulatedPaths:
+- skipVersioning:
+- timestamps:
+- storeSubdocValidationError:
+- methods:
+- query:
+
+## Model CRUD
 
 ### Create OR Update
 
@@ -211,6 +392,56 @@ Finds a matching document, removes it, and returns the found document (if any).
 #### `Model.findOneAndRemove()`
 
 Finds a matching document, removes it, and returns the found document (if any).
+
+### Prefered
+
+#### Constructing Documents
+
+```js
+const Tank = mongoose.model("Tank", yourSchema);
+
+const small = new Tank({ size: "small" });
+small.save(function (err) {
+  if (err) return handleError(err);
+  // saved!
+});
+
+// or
+
+Tank.create({ size: "small" }, function (err, small) {
+  if (err) return handleError(err);
+  // saved!
+});
+
+// or, for inserting large batches of documents
+Tank.insertMany([{ size: "small" }], function (err) {});
+```
+
+#### Querying
+
+```js
+Tank.find({ size: "small" }).where("createdDate").gt(oneYearAgo).exec(callback);
+```
+
+#### Deleting
+
+Models have static deleteOne() and deleteMany() functions for removing all documents matching the given filter.
+
+```js
+Tank.deleteOne({ size: "large" }, function (err) {
+  if (err) return handleError(err);
+  // deleted at most one tank document
+});
+```
+
+#### Updating
+
+```js
+Tank.updateOne({ size: "large" }, { name: "T-90" }, function (err, res) {
+  // Updated at most one doc, `res.nModified` contains the number
+  // of docs that MongoDB updated
+});
+```
 
 ## Transaction
 
