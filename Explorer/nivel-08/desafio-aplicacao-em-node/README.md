@@ -1,5 +1,15 @@
 # Aplicação em Node
 
+- [Aplicação em Node](#aplicação-em-node)
+  - [💻 Sobre o desafio](#-sobre-o-desafio)
+    - [Observações](#observações)
+    - [📅 Entrega](#-entrega)
+  - [Resolução](#resolução)
+    - [Dependencias](#dependencias)
+    - [Estrutura da Aplicacao](#estrutura-da-aplicacao)
+    - [Testing _REST API_ via `$ curl ...`](#testing-rest-api-via--curl-)
+      - [Exemplos](#exemplos)
+
 ## 💻 Sobre o desafio
 
 E aí, o que achou de criar a sua primeira aplicação em Node.js? Massa demais, né? 💜
@@ -75,40 +85,84 @@ _\*\* deve ser executado via `npx` ou instalado globalmente._
 ### Estrutura da Aplicacao
 
 ```
-projeto/
-├── src/
-│   ├── config/
-│   │   ├── db.js
-│   │   └── index.js
-│   ├── controllers/
-│   │   └── users.js
-│   ├── migrations/
-│   │   ├── 20220504170000-create-users.js
-│   │   └── index.js
-│   ├── models/
-│   │   └── user.js
-│   ├── routes/
-│   │   ├── index.js
-│   │   └── users.js
-│   ├── utils/
-│   │   ├── error.js
-│   │   └── index.js
-│   ├── app.js
-│   └── server.js
-├── .env
-├── package.json
-└── README.md
+.
+├── app.js
+├── controllers
+│   ├── genericCtrl.js
+│   ├── movieNoteCtrl.js
+│   ├── movieTagCtrl.js
+│   └── userCtrl.js
+├── db.js
+├── migrate-mongo-config.js
+├── migrations
+│   ├── 20230506183816-createUser.js
+│   ├── 20230506183948-createMovieNote.js
+│   ├── 20230506184102-createMovieTag.js
+│   ├── currentSchemas.js
+│   └── index.js
+├── models
+│   ├── modelNames.js
+│   ├── movieNoteModel.js
+│   ├── movieTagModel.js
+│   └── userModel.js
+├── routes
+│   ├── configBasicRoutes.js
+│   ├── movieNoteRoutes.js
+│   ├── movieTagRoutes.js
+│   ├── routes.js
+│   └── userRoutes.js
+├── seeds
+│   ├── clearDB.js
+│   ├── resetDB.js
+│   ├── seedMovieNote.js
+│   ├── seedMovieTag.js
+│   └── seedUser.js
+├── serverConfig.js
+├── server.js
+├── services
+└── utils
+    ├── error.js
+    └── index.js
 ```
 
 - O diretório `src` é onde ficarão todos os arquivos do seu projeto, incluindo código-fonte, configurações, rotas, modelos, controladores, utilitários e migrações.
 - O diretório `config` contém arquivos de configuração, como o arquivo` db.js`, que exporta uma conexão com o banco de dados utilizando o Mongoose, e o arquivo `index.js`, que carrega as variáveis de ambiente do arquivo `.env`.
 - O diretório `controllers` contém os arquivos que definem as funções que serão executadas quando uma rota for acessada.
-- O diretório `migrations` contém os arquivos que definem as migrações do banco de dados utilizando o `migrate-mongo`.
-- O diretório `models` contém os arquivos que definem os modelos do banco de dados utilizando o `mongoose`.
+- O diretório `migrations` contém os arquivos que definem as migrações do banco de dados utilizando o `migrate-mongo` bem como as respectivas versoes dos `Schema`s.
+- O diretório `models` contém os arquivos que definem os modelos do banco de dados.
 - O diretório `routes` contém os arquivos que definem as rotas da aplicação.
 - O diretório `utils` contém arquivos utilitários, como o arquivo `error.js`, que exporta uma função para lidar com erros da aplicação, e o arquivo `index.js`, que exporta os utilitários que serão utilizados em outros arquivos.
-- O arquivo `app.js` é o ponto de entrada da aplicação, onde são configurados middlewares e rotas.
+- O arquivo `app.js` é o ponto de entrada da aplicação, mas que nao está sendo usado no momento.
 - O arquivo `server.js` é responsável por iniciar o servidor HTTP.
 - O arquivo `.env` é onde ficam as variáveis de ambiente, como as credenciais do banco de dados.
 - O arquivo `package.json` é responsável por descrever as dependências e scripts do projeto.
 - O arquivo `README.md` é utilizado para descrever o projeto e suas funcionalidades.
+
+### Testing _REST API_ via `$ curl ...`
+
+[JSONPlaceholder](https://jsonplaceholder.typicode.com/): Free API for testing and prototyping.
+
+- `-v`: vervose
+- `-i`: include - mostra header da response
+- `-o`: output
+- `-d`: data
+- `-H`: header
+- `-X`: protocol
+- `user`:
+
+#### Exemplos
+
+- GET:
+  - `$ curl https://jsonplaceholder.typicode.com/todos`
+- POST:
+  - `$ curl -d "userId=1&title=titulo da tarefa&completed=false" https://jsonplaceholder.typicode.com/todos`
+- PUT:
+  - `$ curl -X PUT -d "userId=1&title=titulo da tarefa&completed=true" https://jsonplaceholder.typicode.com/todos/5`
+- DELETE:
+  - `$ curl -X DELETE https://jsonplaceholder.typicode.com/todos/5`
+- Custom Headers
+  - `$ curl -d '{"id":9,"name":"baeldung"}' -H 'Content-Type: application/json' http://localhost:8082/spring-rest/foos/new`
+- Custom Headers from file
+  - `$ curl -d @request.json -H "Content-Type: application/json" -H "Accept: application/json" http://localhost:8082/spring-rest/foos/new`
+- Query
+  - `$ curl -X POST -G -d 'name=ze' -d 'email=ze@email.com' -d 'password=secret' http://localhost:3000/users`
