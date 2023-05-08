@@ -1,19 +1,23 @@
 import UserModel from "../models/userModel.js";
+import UserServices from "../services/userServices.js";
+import UserValidator from "../services/userValidators.js";
 
 const userCtrl = UserCtrl();
 export default userCtrl;
 
 function UserCtrl() {
   async function create(req, res) {
-    const { name, email, password, avatar } = req.query;
+    const { name, email, password, avatar } = req.body;
 
     try {
-      const newUser = await UserModel.create({ name, email, password, avatar });
-      await newUser.save();
+      const newUser = await UserServices().create({
+        name,
+        email,
+        password,
+        avatar,
+      });
       res.status(201).json(newUser);
-      console.log("Create User: Success!");
     } catch (error) {
-      console.error("Create User Fail: ");
       res.status(500).json({
         errorCode: 500,
         message: "Internal Server Error: Create User",
@@ -50,18 +54,15 @@ function UserCtrl() {
   async function update(req, res) {
     const id = req.params.id;
 
-    const newName = req.query.name;
-    const newEmail = req.query.email;
-    const newPassword = req.query.password;
-    const newAvatar = req.query.avatar;
+    const { name, email, password, avatar } = req.body;
 
     try {
       const user = await UserModel.findById(id).exec();
 
-      user.email = newEmail ?? user.email;
-      user.name = newName ?? user.name;
-      user.password = newPassword ?? user.password;
-      user.avatar = newAvatar ?? user.avatar;
+      user.name = name ?? user.name;
+      user.email = email ?? user.email;
+      user.password = password ?? user.password;
+      user.avatar = avatar ?? user.avatar;
 
       const updatedUser = await user.save();
 

@@ -1,3 +1,5 @@
+import expressValidator from "express-validator";
+
 export default function (router, { list, create, read, update, destroy }) {
   router.get("/", list);
   router.post("/", create);

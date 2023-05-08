@@ -6,7 +6,7 @@ export default movieNoteCtrl;
 function MovieNoteCtrl() {
   async function create(req, res) {
     try {
-      const { title, user, description, rating } = req.query;
+      const { title, user, description, rating } = req.body;
 
       const movieNote = await MovieNoteModel.create({
         title,
@@ -65,7 +65,7 @@ function MovieNoteCtrl() {
 
       const id = req.params.id;
 
-      const { title, description, rating } = req.query;
+      const { title, description, rating } = req.body;
 
       const movieNote = await MovieNoteModel.findById(id).exec();
 

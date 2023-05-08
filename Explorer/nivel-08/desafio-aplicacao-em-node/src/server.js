@@ -1,8 +1,7 @@
 import express from "express";
 
-import connectDB from "./db.js";
-
 import serverConfig from "./serverConfig.js";
+import connectDB from "./db.js";
 import routes from "./routes/routes.js";
 
 console.log("Dev Mode: ", serverConfig.dev);

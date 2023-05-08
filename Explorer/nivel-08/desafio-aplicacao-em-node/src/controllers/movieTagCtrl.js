@@ -6,7 +6,7 @@ export default movieTagCtrl;
 function MovieTagCtrl() {
   async function create(req, res) {
     try {
-      const { name, movieNote } = req.query;
+      const { name, movieNote } = req.body;
 
       const movieTag = await MovieTagModel.create({ name, movieNote });
 
@@ -52,11 +52,11 @@ function MovieTagCtrl() {
   async function update(req, res) {
     try {
       const id = req.params.id;
-      const newName = req.query.name;
+      const { name } = req.body;
 
       const movieNote = await MovieTagModel.findById(id).exec();
 
-      movieNote.name = newName ?? movieNote.name;
+      movieNote.name = name ?? movieNote.name;
 
       const updatedMovieNote = await movieNote.save();
 

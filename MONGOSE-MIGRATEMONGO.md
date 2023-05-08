@@ -1229,7 +1229,7 @@ story.author._id; // ObjectId, because Mongoose adds a special getter
 
 #### Field Selection
 
-If we only want a few specific fields returned for the populated documents, we should pass the usual field name syntax as the second argument to the populate method
+If we only want a few specific fields returned for the populated documents, we should pass the usual field name syntax as the second argument to the populate method.
 
 ```js
 Story.findOne({ title: /casino royale/i })
@@ -1953,7 +1953,7 @@ migratedDown.forEach((fileName) => console.log("Migrated Down:", fileName));
 
 ### `status(MongoDb) → Promise<Array<{ fileName, appliedAt }>>`
 
-Check which migrations are applied (or not.
+Check which migrations are applied or not.
 
 ```javascript
 const { db } = await database.connect();

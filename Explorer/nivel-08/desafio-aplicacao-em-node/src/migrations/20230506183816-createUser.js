@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import ModelNames from "../models/modelNames.js";
+import Crypt from "../utils/crypt.js";
 
 class UserClass {
   findSimilarName(name) {
@@ -15,7 +16,7 @@ export const UserSchema = new mongoose.Schema(
   {
     name: {
       type: mongoose.Schema.Types.String,
-      required: true,
+      required: [true, "Name is required"],
     },
 
     email: {
@@ -23,7 +24,7 @@ export const UserSchema = new mongoose.Schema(
       trim: true,
       unique: true,
       index: true,
-      required: true,
+      required: [true, "Email is required"],
     },
 
     password: {
@@ -38,7 +39,17 @@ export const UserSchema = new mongoose.Schema(
   { timestamps: true }
 ).loadClass(UserClass);
 
-console.log("Indexes: ",UserSchema.indexes());
+UserSchema.path("password").set(function (password) {
+  if (password.length < 8 || password.length > 16) {
+    throw new Error("A senha deve ter entre 8 e 16 caracteres");
+  }
+  
+  return encryptPassword(password);
+});
+
+UserSchema.methods.verifyPassword = function (password) {
+  return Crypt().verifyPassword(password, this.password);
+};
 
 export const up = async (db, client) => {
   // TODO write your migration here.

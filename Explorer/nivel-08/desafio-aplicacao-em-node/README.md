@@ -9,6 +9,7 @@
     - [Estrutura da Aplicacao](#estrutura-da-aplicacao)
     - [Testing _REST API_ via `$ curl ...`](#testing-rest-api-via--curl-)
       - [Exemplos](#exemplos)
+    - [TO DO](#to-do)
 
 ## 💻 Sobre o desafio
 
@@ -77,6 +78,10 @@ Feito com 💜 por Rocketseat 👋 Participe da nossa [comunidade aberta](https:
 - [express-validator](https://www.npmjs.com/package/express-validator): conjunto de middlewares do express.js que encapsula a extensa coleção de validators e sanitizators oferecidos pelo [validator](https://www.npmjs.com/package/validator).
 - [migrate-mongo](https://www.npmjs.com/package/migrate-mongo) _\*\*_ : ferramenta que dá suporte a migrations para MongoDB.
 - [mongoose](https://www.npmjs.com/package/mongoose): ferramenta de modelagem de objetos do MongoDB projetada para funcionar em um ambiente assíncrono.
+- [axios]() _\*_: utilizado para fazer requisições HTTP
+- [mocha]() _\*_: framework de testes que permite escrever e executar testes de forma simples e eficiente
+- [chai]() _\*_: biblioteca de asserções que pode ser utilizada em conjunto com o Mocha para verificar se os resultados dos testes estão corretos
+- [sinon]() _\*_: biblioteca de "mocks", "spies" e "stubs" que permite criar objetos simulados para testar a interação entre diferentes partes do código
 
 _\* deve ser instalado como dependencia de desenvolvimento._
 
@@ -93,6 +98,7 @@ _\*\* deve ser executado via `npx` ou instalado globalmente._
 │   ├── movieTagCtrl.js
 │   └── userCtrl.js
 ├── db.js
+├── middlewares
 ├── migrate-mongo-config.js
 ├── migrations
 │   ├── 20230506183816-createUser.js
@@ -120,9 +126,10 @@ _\*\* deve ser executado via `npx` ou instalado globalmente._
 ├── serverConfig.js
 ├── server.js
 ├── services
-└── utils
-    ├── error.js
-    └── index.js
+├── utils
+│   ├── error.js
+│   └── index.js
+└── validators
 ```
 
 - O diretório `src` é onde ficarão todos os arquivos do seu projeto, incluindo código-fonte, configurações, rotas, modelos, controladores, utilitários e migrações.
@@ -137,6 +144,9 @@ _\*\* deve ser executado via `npx` ou instalado globalmente._
 - O arquivo `.env` é onde ficam as variáveis de ambiente, como as credenciais do banco de dados.
 - O arquivo `package.json` é responsável por descrever as dependências e scripts do projeto.
 - O arquivo `README.md` é utilizado para descrever o projeto e suas funcionalidades.
+- O diretorio `services` contem os arquivos que implementam a logica de negocios.
+- O diretorio `middlewares` contem os middlewares.
+- O diretorio `validators` contem os validators.
 
 ### Testing _REST API_ via `$ curl ...`
 
@@ -166,3 +176,12 @@ _\*\* deve ser executado via `npx` ou instalado globalmente._
   - `$ curl -d @request.json -H "Content-Type: application/json" -H "Accept: application/json" http://localhost:8082/spring-rest/foos/new`
 - Query
   - `$ curl -X POST -G -d 'name=ze' -d 'email=ze@email.com' -d 'password=secret' http://localhost:3000/users`
+
+### TO DO
+
+- [ ] Fazer os unique indexes funcionar. E analisar outros sao necessarios.
+- [ ] Implementar os middlewares necessarios.
+- [ ] Implementar os validators necessarios.
+- [ ] Implementar a criptografia nos passwords.
+- [ ] Implementar a logica do "ON DELETE CASCADE"
+- [ ] implementar testes
