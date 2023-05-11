@@ -1,13 +1,17 @@
 import UserModel from "../models/userModel.js";
 import UserServices from "../services/userServices.js";
-import UserValidator from "../services/userValidators.js";
+import loggers from "../utils/loggers.js";
+
+const { logger } = loggers;
 
 const userCtrl = UserCtrl();
 export default userCtrl;
 
 function UserCtrl() {
-  async function create(req, res) {
+  async function create(req, res, next) {
     const { name, email, password, avatar } = req.body;
+
+    logger.info(`Users Ctrl Create ${(name, email, password, avatar)}`);
 
     try {
       const newUser = await UserServices().create({
@@ -16,11 +20,20 @@ function UserCtrl() {
         password,
         avatar,
       });
+
+      logger.info(
+        `Users Ctrl Create ${(name, email, password, avatar)}: Success`
+      );
+
       res.status(201).json(newUser);
     } catch (error) {
+      logger.error(
+        `Users Ctrl Create ${(name, email, password, avatar)}: Fail`
+      );
+
       res.status(500).json({
         errorCode: 500,
-        message: "Internal Server Error: Create User",
+        message: "Erro interno do servidor: não foi possível criar usuário",
       });
     }
   }
@@ -28,11 +41,17 @@ function UserCtrl() {
   async function read(req, res) {
     const id = req.params.id;
 
+    logger.info(`Users Ctrl Read ${id}`);
+
     try {
       const user = await UserModel.findById(id).lean().exec();
 
+      logger.info(`Users Ctrl Read ${id}: Success`);
+
       res.status(200).json(user);
     } catch (err) {
+      logger.error(`Users Ctrl Read ${id}: Fail`);
+
       res
         .status(500)
         .json({ errorCode: 500, message: "Internal Server Error: Read User" });
@@ -41,10 +60,16 @@ function UserCtrl() {
 
   async function list(req, res) {
     try {
+      logger.info(`Users Ctrl List`);
+
       const users = await UserModel.find().exec();
+
+      logger.info(`Users Ctrl List: Success`);
 
       res.status(200).json(users);
     } catch (err) {
+      logger.error(`Users Ctrl List: Fail`);
+
       res
         .status(500)
         .json({ errorCode: 500, message: "Internal Server Error: List Users" });
@@ -56,6 +81,8 @@ function UserCtrl() {
 
     const { name, email, password, avatar } = req.body;
 
+    logger.info(`Users Ctrl Update ${(name, email, password, avatar)}`);
+
     try {
       const user = await UserModel.findById(id).exec();
 
@@ -66,8 +93,16 @@ function UserCtrl() {
 
       const updatedUser = await user.save();
 
+      logger.info(
+        `Users Ctrl Update ${(name, email, password, avatar)}: Success`
+      );
+
       res.status(301).json(updatedUser);
     } catch (err) {
+      logger.error(
+        `Users Ctrl Update ${(name, email, password, avatar)}: Fail`
+      );
+
       res.status(500).json({
         errorCode: 500,
         message: "Internal Server Error: Update User",
@@ -78,10 +113,17 @@ function UserCtrl() {
   async function destroy(req, res) {
     const id = req.params.id;
 
+    logger.info(`Users Ctrl Destroy ${id}`);
+
     try {
       const result = await UserModel.deleteOne({ _id: id }).exec();
+
+      logger.info(`Users Ctrl Destroy ${id}: Success`);
+
       res.status(202).json(result);
     } catch (err) {
+      logger.error(`Users Ctrl Destroy ${id}: Fail`);
+
       res.status(500).json({
         errorCode: 500,
         message: "Internal Server Error: Destroy User",

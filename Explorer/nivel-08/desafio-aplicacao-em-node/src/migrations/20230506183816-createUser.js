@@ -43,12 +43,14 @@ UserSchema.path("password").set(function (password) {
   if (password.length < 8 || password.length > 16) {
     throw new Error("A senha deve ter entre 8 e 16 caracteres");
   }
-  
-  return encryptPassword(password);
+
+  const encPass = Crypt.encryptPassword(password);
+
+  return encPass;
 });
 
 UserSchema.methods.verifyPassword = function (password) {
-  return Crypt().verifyPassword(password, this.password);
+  return Crypt.verifyPassword(password, this.password);
 };
 
 export const up = async (db, client) => {

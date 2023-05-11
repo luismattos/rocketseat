@@ -15,5 +15,9 @@ async function Routes() {
   router.use("/notes", movieNoteRoutes);
   router.use("/tags", movieTagRoutes);
 
+  router.use((req, res) => {
+    res.status(404).json({ errorCode: 404, message: "Rota não encontrada" });
+  });
+
   return router;
 }

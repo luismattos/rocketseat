@@ -1,21 +1,30 @@
 import mongoose from "mongoose";
-import serverConfig from "./serverConfig.js";
+import config from "./config.js";
+import loggers from "./utils/loggers.js";
 
-export default async function connectDB() {
-  const uri = serverConfig.db.uri;
-  const options = serverConfig.db.options;
+const db = DB();
+export default db;
 
-  await mongoose.connect(uri, options).catch((error) => {
-    console.error("DB connection error!!!", error);
-  });
+function DB() {
+  async function init() {
+    const uri = config.db.uri;
+    const options = config.db.options;
+    const { logger } = loggers;
 
-  mongoose.connection.once("open", () => {
-    console.log(
-      `Connection has been established with the database: ${mongoose.connection.name}`
-    );
-  });
+    await mongoose.connect(uri, options).catch((error) => {
+      logger.error(`DB connection (${uri}) error!!!`);
+    });
 
-  if (serverConfig.dev) {
-    await import("./seeds/resetDB.js").then((resetDB) => resetDB.resetDB());
+    mongoose.connection.once("open", () => {
+      console.info(
+        `Connection has been established with the database: ${mongoose.connection.name}`
+      );
+    });
+
+    if (config.dev) {
+      await import("./seeds/resetDB.js").then((resetDB) => resetDB.resetDB());
+    }
   }
+
+  return { init };
 }

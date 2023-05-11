@@ -1,40 +1,46 @@
 import crypto from "crypto";
-import serverConfig from "../serverConfig.js";
+import serverConfig from "../config.js";
 
-export default function Crypt() {
-  const pepper = serverConfig.pepper;
-  const separator = ":";
+const PEPPER = serverConfig.pepper;
+const SEPARATOR = ":";
+const DIGEST = "sha512";
 
-  function encrypt(password) {
-    const iterations = serverConfig.crypt.iterations;
-    const keylen = serverConfig.crypt.keylen;
-    const digest = serverConfig.crypt.digest;
-    const salt = crypto.randomBytes(serverConfig.crypt.saltlen).toString("hex");
+const Crypt = Crypts();
+
+export default Crypt;
+
+function Crypts() {
+  function encryptPassword(password) {
+    const iterations = 1000;
+    const saltLen = 16;
+    const keyLen = 64;
+
+    const salt = crypto.randomBytes(saltLen).toString("hex");
 
     const hash = crypto.pbkdf2Sync(
-      password + pepper,
+      password + PEPPER,
       salt,
       iterations,
-      keylen,
-      digest
+      keyLen,
+      DIGEST
     );
 
-    return `${salt}${separator}${iterations}${separator}${hash.toString(
+    return `${salt}${SEPARATOR}${iterations}${SEPARATOR}${hash.toString(
       "hex"
     )}`;
   }
 
-  function verify(password, hash) {
-    const [salt, iterations, key] = hash.split(separator);
+  function verifyPassword(password, hash) {
+    const [salt, iterations, key] = hash.split(SEPARATOR);
     const iterationsInt = parseInt(iterations, 10);
     const hashBuffer = Buffer.from(key, "hex");
 
     const verifyHash = crypto.pbkdf2Sync(
-      password + pepper,
+      password + PEPPER,
       salt,
       iterationsInt,
       hashBuffer.length,
-      "sha512"
+      DIGEST
     );
 
     return crypto.timingSafeEqual(hashBuffer, verifyHash);

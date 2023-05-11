@@ -1,20 +1,30 @@
 import express from "express";
 
-import serverConfig from "./serverConfig.js";
-import connectDB from "./db.js";
+import config from "./config.js";
 import routes from "./routes/routes.js";
+import loggers from "./utils/loggers.js";
 
-console.log("Dev Mode: ", serverConfig.dev);
+const server = Server();
+export default server;
 
-connectDB().then(() => serverRun());
+function Server() {
+  function init() {
+    const app = express();
+    const port = config.server.port;
+    const url = config.server.url;
 
-export default function serverRun() {
-  const app = express();
-  const port = serverConfig.port;
+    const { logger, httpLogger } = loggers;
 
-  app.use(express.json());
+    if (config.dev) {
+      logger.warn(`--- DEV MODE ---`);
+    }
 
-  app.use("/", routes);
+    app.use(express.json());
 
-  app.listen(port, () => console.log(`Listening on port ${port}!`));
+    app.use(httpLogger, routes);
+
+    app.listen(port, () => logger.info(`Listening on ${url}!`));
+  }
+
+  return { init };
 }

@@ -171,7 +171,7 @@ _\*\* deve ser executado via `npx` ou instalado globalmente._
 - DELETE:
   - `$ curl -X DELETE https://jsonplaceholder.typicode.com/todos/5`
 - Custom Headers
-  - `$ curl -d '{"id":9,"name":"baeldung"}' -H 'Content-Type: application/json' http://localhost:8082/spring-rest/foos/new`
+  - `$ curl -d '{"name": "user0", "email":"email0", "password":"password0"}' -H 'Content-Type: application/json' http://localhost:3000/users`
 - Custom Headers from file
   - `$ curl -d @request.json -H "Content-Type: application/json" -H "Accept: application/json" http://localhost:8082/spring-rest/foos/new`
 - Query
@@ -180,8 +180,9 @@ _\*\* deve ser executado via `npx` ou instalado globalmente._
 ### TO DO
 
 - [ ] Fazer os unique indexes funcionar. E analisar outros sao necessarios.
-- [ ] Implementar os middlewares necessarios.
 - [ ] Implementar os validators necessarios.
-- [ ] Implementar a criptografia nos passwords.
+  - [x] User
+  - [ ] Movie Note
+  - [ ] Movie Tag
+- [x] Implementar a criptografia nos passwords.
 - [ ] Implementar a logica do "ON DELETE CASCADE"
-- [ ] implementar testes

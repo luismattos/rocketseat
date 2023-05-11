@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import ModelNames from "../models/modelNames.js";
-import serverConfig from "../serverConfig.js";
+import serverConfig from "../config.js";
 
 class MovieNoteClass {
   static findSimilarUser(userId) {
@@ -20,7 +20,7 @@ export const MovieNoteSchema = new mongoose.Schema(
     description: { type: String },
 
     rating: { type: Number },
-    
+
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: ModelNames.User,
