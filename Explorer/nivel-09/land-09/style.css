@@ -70,6 +70,10 @@ h2 {
 }
 
 main > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
   grid-column: 6 / 9;
   font-size: 1.2rem;
 }
