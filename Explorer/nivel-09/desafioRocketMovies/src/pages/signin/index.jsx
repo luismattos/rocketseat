@@ -4,6 +4,7 @@ import { TfiEmail, TfiLock } from "react-icons/tfi";
 import { Input } from "../../components/input";
 import { Button } from "../../components/button";
 import { TextButton } from "../../components/textButton";
+import theme from "../../styles/theme.js";
 
 export function SignIn() {
   return (
@@ -15,7 +16,7 @@ export function SignIn() {
         </Form>
 
         <Button text="Sign In" />
-        <TextButton href="#" text="Sign Up" />
+        <TextButton textColor={theme.COLOR.PINK} href="#" text="Sign Up" />
       </Container>
     </Auth>
   );

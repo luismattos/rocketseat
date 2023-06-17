@@ -14,6 +14,7 @@ export const Container = styled.div`
   }
 
   > input {
+    padding: 0;
     width: 100%;
     flex-grow: 1;
     border: none;

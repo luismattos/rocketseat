@@ -1,8 +1,8 @@
 import { Container } from "./styles.js";
 
-export function TextButton({ icon: Icon, text = "", ...rest }) {
+export function TextButton({ icon: Icon, text = "", textColor, ...rest }) {
   return (
-    <Container>
+    <Container textColor={textColor}>
       <a {...rest}>
         {Icon && <Icon />}
         {text}

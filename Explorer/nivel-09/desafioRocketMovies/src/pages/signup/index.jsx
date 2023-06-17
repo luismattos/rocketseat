@@ -5,6 +5,7 @@ import { SlUser } from "react-icons/sl";
 import { Input } from "../../components/input";
 import { Button } from "../../components/button";
 import { TextButton } from "../../components/textButton";
+import theme from "../../styles/theme.js";
 
 export function SignUp() {
   return (
@@ -17,7 +18,12 @@ export function SignUp() {
         </Form>
 
         <Button text="Sign Up" />
-        <TextButton icon={TfiArrowLeft} href="#" text="Sign In" />
+        <TextButton
+          textColor={theme.COLOR.PINK}
+          icon={TfiArrowLeft}
+          href="#"
+          text="Sign In"
+        />
       </Container>
     </Auth>
   );

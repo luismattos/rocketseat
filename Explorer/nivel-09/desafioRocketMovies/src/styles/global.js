@@ -11,7 +11,6 @@ export default createGlobalStyle`
     color: ${({ theme }) => theme.COLOR.WHITE};
     font-weight: ${({ theme }) => theme.FONT.WEIGHT.REGULAR};
     font-size: 1.6rem;
-    overflow: hidden;
   }
 
   body{
