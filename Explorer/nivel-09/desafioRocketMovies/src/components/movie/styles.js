@@ -15,13 +15,6 @@ export const Container = styled.div`
     font-weight: ${({ theme }) => theme.FONT.WEIGHT.BOLD};
   }
 
-  #stars {
-    svg {
-      fill: ${({ theme }) => theme.COLOR.PINK};
-      font-size: 1.2rem;
-    }
-  }
-
   #summary {
     margin: 0.8rem 0;
 

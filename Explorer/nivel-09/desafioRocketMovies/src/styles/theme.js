@@ -13,6 +13,7 @@ export default {
     CLOSE: "TfiClose",
     STAR: "TfiStar",
     CAMERA: "IoCameraOutline",
+    CLOCK: "AiOutlineClockCircle",
   },
 
   FONT: {
