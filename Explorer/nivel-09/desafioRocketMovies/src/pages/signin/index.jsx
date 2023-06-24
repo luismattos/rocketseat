@@ -16,7 +16,11 @@ export function SignIn() {
         </Form>
 
         <Button text="Sign In" />
-        <TextButton textColor={theme.COLOR.PINK} href="#" text="Sign Up" />
+        <TextButton
+          textColor={theme.COLOR.PINK}
+          to="/register"
+          text="Sign Up"
+        />
       </Container>
     </Auth>
   );

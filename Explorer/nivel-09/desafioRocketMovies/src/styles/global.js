@@ -18,4 +18,8 @@ export default createGlobalStyle`
     height: 100vh;
   }
 
+  * {
+    text-decoration:none;
+  }
+
 `;

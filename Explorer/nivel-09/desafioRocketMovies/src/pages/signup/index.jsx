@@ -21,7 +21,7 @@ export function SignUp() {
         <TextButton
           textColor={theme.COLOR.PINK}
           icon={TfiArrowLeft}
-          href="#"
+          to="/"
           text="Sign In"
         />
       </Container>

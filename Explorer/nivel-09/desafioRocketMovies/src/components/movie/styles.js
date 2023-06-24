@@ -1,12 +1,14 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled(Link)`
   padding: 3.2rem;
   background-color: ${({ theme }) => theme.COLOR.PINK_ST};
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
   border-radius: 1.6rem;
+  
 
   #title {
     color: ${({ theme }) => theme.COLOR.LIGHT_GREY};

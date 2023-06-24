@@ -18,15 +18,18 @@ import {
   TitleStars,
 } from "./styles.js";
 
+const lorem =
+  "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque qui fugiat totam temporibus optio ea adipisci, cum perspiciatis sit, doloribus quam. Consectetur, alias saepe, vero itaque culpa debitis architecto illo nisi rerum repellendus voluptas impedit voluptatum accusamus ipsam delectus nihil possimus omnis adipisci repudiandae. Magni cumque velit unde, expedita quo dicta blanditiis! Cumque, architecto vel dolorum debitis, molestias laboriosam hic recusandae animi cupiditate, a sit rerum non est repudiandae incidunt deserunt et neque! Assumenda ut necessitatibus illum facere tempore tenetur, porro natus accusantium architecto voluptas pariatur eveniet iusto! Dolores soluta cum assumenda eveniet obcaecati voluptas, et maiores nulla delectus est reiciendis saepe non expedita libero dicta odio mollitia. Consectetur ratione sed, laborum quia dicta beatae porro perspiciatis reprehenderit veritatis officiis odio ipsum labore nulla modi, perferendis esse dolore aliquam illo necessitatibus velit temporibus neque minima accusantium veniam? Harum, nemo vero esse illo repellendus cum temporibus, molestiae magnam deleniti distinctio voluptatibus eligendi commodi dolorum placeat atque similique velit fuga ipsa iusto accusamus voluptates laudantium delectus. Sit neque necessitatibus nesciunt dolores porro. Nihil, laborum. Assumenda enim in quas laudantium voluptates nulla vel earum dolorum magni aperiam officiis eum cumque ratione accusantium, similique architecto exercitationem, veritatis excepturi sit ipsam voluptate, quam eligendi ad. Consectetur ratione sed, laborum quia dicta beatae porro perspiciatis reprehenderit veritatis officiis odio ipsum labore nulla modi, perferendis esse dolore aliquam illo necessitatibus velit temporibus neque minima accusantium veniam? Harum, nemo vero esse illo repellendus cum temporibus, molestiae magnam deleniti distinctio voluptatibus eligendi commodi dolorum placeat atque similique velit fuga ipsa iusto accusamus voluptates laudantium delectus. Sit neque necessitatibus nesciunt dolores porro. Nihil, laborum. Assumenda enim in quas laudantium voluptates nulla vel earum dolorum magni aperiam officiis eum cumque ratione accusantium, similique architecto exercitationem, veritatis excepturi sit ipsam voluptate, quam eligendi ad.";
+
 export function MoviePreview({
-  title,
+  title = "Filme X",
   nStars,
-  authorImgUrl,
-  author,
-  date,
-  time,
-  tags,
-  summary,
+  authorImgUrl = "https://github.com/luismattos.png",
+  author = "Luis Mattos",
+  date = "01/01/2001",
+  time = "16:30",
+  tags = ["Tag1", "Tag2"],
+  summary = lorem,
 }) {
   const lrPadding = "12rem";
 
@@ -35,6 +38,7 @@ export function MoviePreview({
       <Header lrPadding={lrPadding} />
       <main>
         <TextButton
+          to="/"
           icon={TfiArrowLeft}
           textColor={theme.COLOR.PINK}
           text="Voltar"

@@ -1,12 +1,13 @@
 import { Container } from "./styles.js";
+import { Link } from "react-router-dom";
 
-export function TextButton({ icon: Icon, text = "", textColor, ...rest }) {
+export function TextButton({ to="#", icon: Icon, text = "", textColor, ...rest }) {
   return (
     <Container textColor={textColor}>
-      <a {...rest}>
+      <Link to={to} {...rest}>
         {Icon && <Icon />}
         {text}
-      </a>
+      </Link>
     </Container>
   );
 }

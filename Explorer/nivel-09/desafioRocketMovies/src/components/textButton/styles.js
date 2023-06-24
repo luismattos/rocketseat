@@ -26,6 +26,3 @@ export const Container = styled.div`
     }
   }
 `;
-
-//color: ${({ theme, color }) => color};
-//fill: ${({ theme, color }) => color};

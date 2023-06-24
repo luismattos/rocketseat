@@ -29,9 +29,10 @@ export default {
   },
   COLOR: {
     BODY_BACKGROUND: "hsla(260, 5%, 11%, 1)",
-    PINK: "hsla(360, 100%, 76%, 1)",
+    PINK: "hsla(311, 100%, 84%, 1)",
     PINK_ST: "hsla(349, 100%, 76%, 0.05)",
     WHITE: "hsla(26, 37%, 93%, 1)",
+    BLACK: "hsla(255, 11%, 5%, 1)",
     GREY: "hsla(255, 5%, 15%, 1)",
     LIGHT_GREY: "hsla(270, 5%, 58%, 1)",
   },

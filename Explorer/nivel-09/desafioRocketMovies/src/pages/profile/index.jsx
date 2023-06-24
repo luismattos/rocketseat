@@ -7,7 +7,11 @@ import theme from "../../styles/theme";
 import { Input } from "../../components/input";
 import { BsCamera } from "react-icons/bs";
 
-export function Profile({ userImgUrl, userEmail, userName }) {
+export function Profile({
+  userImgUrl = "https://github.com/luismattos.png",
+  userEmail = "luismattos@email.com",
+  userName = "Luis Mattos",
+}) {
   return (
     <Container>
       <header>
@@ -43,7 +47,7 @@ export function Profile({ userImgUrl, userEmail, userName }) {
           />
         </Form>
         <Form>
-          <Input icon={TfiLock} type="password" placeholder="Nova senha" />
+          <Input icon={TfiLock} type="password" placeholder="Senha antiga" />
           <Input icon={TfiLock} type="password" placeholder="Nova senha" />
         </Form>
         <div>
