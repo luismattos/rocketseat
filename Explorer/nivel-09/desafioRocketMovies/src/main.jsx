@@ -5,7 +5,6 @@ import { Reset } from "styled-reset";
 import { Routes } from "./routes";
 import theme from "./styles/theme.js";
 import GlobalStyle from "./styles/global.js";
-import { TextButton } from "./components/textButton";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

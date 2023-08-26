@@ -27,6 +27,7 @@ export default {
       BOLD: 700,
     },
   },
+  
   COLOR: {
     BODY_BACKGROUND: "hsla(260, 5%, 11%, 1)",
     PINK: "hsla(311, 100%, 84%, 1)",

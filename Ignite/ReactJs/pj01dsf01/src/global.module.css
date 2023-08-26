@@ -1,0 +1,37 @@
+:root {
+  --ff-main: "Inter", sans-serif;
+  --fs-12: 0.75rem;
+  --fs-14: 0.875rem;
+  --fs-16: 1rem;
+  --lh: 140%;
+  --fw-regular: 400;
+  --fw-bold: 700;
+
+  --color-blue-dark: #1e6f9f;
+  --color-blue: #4ea8de;
+
+  --color-purple-dark: #5e60ce;
+  --color-purple: #8284fa;
+
+  --color-gray-700: #0d0d0d;
+  --color-gray-600: #1a1a1a;
+  --color-gray-500: #262626;
+  --color-gray-400: #333333;
+  --color-gray-300: #808080;
+  --color-gray-200: #d8d8d8;
+  --color-gray-100: #f2f2f2;
+
+  --color-danger: #e25858;
+}
+
+body {
+  background-color: var(--color-gray-600);
+  height: 1vh;
+}
+
+* {
+  font-family: var(--ff-main);
+  font-size: var(--fs-16);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh);
+}
