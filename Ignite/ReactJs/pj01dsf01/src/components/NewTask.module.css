@@ -1,0 +1,48 @@
+.form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.form > * {
+  min-height: 3.24rem;
+}
+
+.form > input {
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  height: 100%;
+  padding: 0 1rem;
+  background-color: var(--color-gray-500);
+  color: var(--color-gray-100);
+}
+
+.form > input::placeholder {
+  color: var(--color-gray-300);
+}
+
+.form > button {
+  background-color: var(--color-blue-dark);
+  font-weight: var(--fw-bold);
+  border: none;
+  cursor: pointer;
+
+  transition: ease;
+  transition-duration: 0.1s;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 100%;
+  padding: 0 1rem;
+  border-radius: 8px;
+}
+
+.form > button:disabled {
+  cursor: not-allowed;
+}
+
+.form > button:not(:disabled):hover {
+  background-color: var(--color-blue);
+}

@@ -24,14 +24,15 @@
   --color-danger: #e25858;
 }
 
-body {
-  background-color: var(--color-gray-600);
-  height: 1vh;
-}
-
 * {
+  box-sizing: border-box;
+  color: var(--color-gray-100);
   font-family: var(--ff-main);
   font-size: var(--fs-16);
   font-weight: var(--fw-regular);
   line-height: var(--lh);
+}
+body {
+  background-color: var(--color-gray-600);
+  height: 1vh;
 }

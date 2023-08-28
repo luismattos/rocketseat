@@ -1,0 +1,76 @@
+.container {
+  padding: 1rem;
+  background-color: var(--color-gray-400);
+  border-radius: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.checked,
+.unchecked {
+  display: flex;
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.checked > div,
+.unchecked > div {
+  min-width: 1rem;
+  min-height: 1rem;
+  max-width: 1rem;
+  max-height: 1rem;
+  width: 1rem;
+  height: 1rem;
+  padding: 0.125rem;
+
+  border-radius: 99999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.unchecked > div {
+  border: solid 0.125rem var(--color-blue);
+}
+
+.unchecked > div:hover {
+  border-color: var(--color-blue-dark);
+}
+
+.checked > div {
+  border: none;
+  background-color: var(--color-purple-dark);
+}
+
+.checked > div:hover {
+  background-color: var(--color-purple);
+}
+
+p {
+  flex-grow: 1;
+  font-size: var(--fs-14);
+}
+
+.checked p {
+  color: var(--color-gray-300);
+
+  text-decoration: line-through solid 0.063rem;
+}
+
+.unchecked p {
+  color: var(--color-gray-100);
+}
+
+.trash svg {
+  stroke: var(--color-gray-300);
+  cursor: pointer;
+}
+
+.trash svg:hover {
+  stroke: var(--color-danger);
+  cursor: pointer;
+}
